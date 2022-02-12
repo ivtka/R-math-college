@@ -26,10 +26,10 @@ lu <- function(A, b, n) {
   U <- matrix(0, nrow = n, ncol = n)
 
   for (i in 1:n) {
-    L[i, 1] = A[i, 1]
+    L[i, 1] <- A[i, 1]
   }
   for (j in 1:n) {
-    U[1, j] = A[1, j] / L[1, 1]
+    U[1, j] <- A[1, j] / L[1, 1]
   }
 
   for (i in 1:n) {
@@ -39,17 +39,17 @@ lu <- function(A, b, n) {
         s <- s + L[i, k] * U[k, j]
       }
       if ((i >= j) && (j > 1)) {
-        L[i, j] = A[i, j] - s
+        L[i, j] <- A[i, j] - s
       }
       if ((j > i) && (i > 1)) {
-        U[i, j] = (A[i, j] - s) / L[i, i]
+        U[i, j] <- (A[i, j] - s) / L[i, i]
       }
     }
-    U[i, i] = 1
+    U[i, i] <- 1
   }
 
-  y = solve(L, b)
-  x = solve(U, y)
+  y <- solve(L, b)
+  x <- solve(U, y)
 
   return(x)
 }
@@ -72,7 +72,7 @@ sqroot <- function(A, b, n) {
         for (k in 1:(i - 1)) {
           s <- s + U[k, i] * U[k, j]
         }
-        U[i, j] = (A[i, j] - s) / U[i, i]
+        U[i, j] <- (A[i, j] - s) / U[i, i]
       }
       if (i > j) {
         U[i, j] <- 0
@@ -80,8 +80,8 @@ sqroot <- function(A, b, n) {
     }
   }
 
-  y = solve(t(U), b)
-  x = solve(U, y)
+  y <- solve(t(U), b)
+  x <- solve(U, y)
 
   return(x)
 }
