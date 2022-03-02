@@ -63,7 +63,7 @@ sqroot <- function(A, b, n) {
   for (i in 2:n) {
     s <- 0
     for (k in 1:(i - 1)) {
-      s <- s + U[k, i] ^ 2
+      s <- s + U[k, i]^2
     }
     U[i, i] <- sqrt(A[i, i] - s)
     for (j in 2:n) {
